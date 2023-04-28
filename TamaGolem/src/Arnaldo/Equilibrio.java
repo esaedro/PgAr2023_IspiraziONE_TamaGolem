@@ -1,4 +1,6 @@
 package Arnaldo;
 public class Equilibrio {
-    private int [][] equilibrio;
+    public static final int N = 5;
+    private int[][] equilibrio;
+
 }
