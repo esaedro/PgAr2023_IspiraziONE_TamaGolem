@@ -1,0 +1,6 @@
+package Arnaldo;
+public enum Elemento {
+
+    GENNAIO, FEBBRAIO, MARZO, APRILE, MAGGIO, GIUGNO, LUGLIO, AGOSTO, SETTEMBRE, OTTOBRE;
+
+}
