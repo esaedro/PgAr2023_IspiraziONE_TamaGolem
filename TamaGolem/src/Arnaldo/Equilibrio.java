@@ -84,7 +84,12 @@ public class Equilibrio {
         for (int[] riga : tabellaEquilibrio) {
             System.out.println();
             for (int elemento : riga) {
-                System.out.print(String.format("%3d", elemento));
+                if (elemento == -1) {
+                    System.out.print("  X");
+                }
+                else {
+                    System.out.print(String.format("%3d", elemento));
+                }
             }
         }
 
