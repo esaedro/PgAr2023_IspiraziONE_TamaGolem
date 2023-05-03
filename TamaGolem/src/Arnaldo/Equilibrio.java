@@ -7,11 +7,11 @@ public class Equilibrio {
     private static int[][] tabellaEquilibrio = new int[N][N];
     private static int[] valori = { -1, -1, -1, -1, -1, -1, -1, -1, 1, 2, 3, 4, 5, 6, 7, 8};
 
-/*     public static void main(String[] args) {
+   public static void main(String[] args) {
 
         generaEquilibrio();
         mostraEquilibrio();
-    } */
+    } 
 
     /**
      * Genera l'equilibrio dello scontro attuale
@@ -84,7 +84,12 @@ public class Equilibrio {
         for (int[] riga : tabellaEquilibrio) {
             System.out.println();
             for (int elemento : riga) {
-                System.out.print(String.format("%3d", elemento));
+                if (elemento == -1) {
+                    System.out.print("  X");
+                }
+                else {
+                    System.out.print(String.format("%3d", elemento));
+                }
             }
         }
 
