@@ -7,11 +7,12 @@ public class Equilibrio {
     private static int[][] tabellaEquilibrio = new int[N][N];
     private static int[] valori = { -1, -1, -1, -1, -1, -1, -1, -1, 1, 2, 3, 4, 5, 6, 7, 8};
 
-/*     public static void main(String[] args) {
+    public static void main(String[] args) {
 
         generaEquilibrio();
         mostraEquilibrio();
-    } */
+        System.out.println(potenzaMassima());
+    }
 
     /**
      * Genera l'equilibrio dello scontro attuale
@@ -97,4 +98,18 @@ public class Equilibrio {
 
     }
 
+    /**
+     * Trova il valore di potenza massimo all'interno della tabella dell'equilibrio
+     */
+    public static int potenzaMassima() {
+        int max = 0;
+        
+        for (int[] riga : tabellaEquilibrio) {
+            for (int potenza : riga) {
+                max = potenza > max ? potenza : max;
+            }
+        }
+        
+        return max;
+    }
 }
