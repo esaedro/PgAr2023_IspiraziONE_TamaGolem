@@ -3,15 +3,28 @@ package Arnaldo;
 import it.unibs.fp.mylib.EstrazioneCasuale;
 
 public class Equilibrio {
-    public static final int N = 5;
-    private static int[][] tabellaEquilibrio = new int[N][N];
-    private static int[] valori = { -1, -1, -1, -1, -1, -1, -1, -1, 1, 2, 3, 4, 5, 6, 7, 8};
 
-    public static void main(String[] args) {
+    /**
+     * Numero di elementi
+     */
+    public static final int N = 5;
+    private static final int[] valori = { -1, -1, -1, -1, -1, -1, -1, -1, 1, 2, 3, 4, 5, 6, 7, 8};
+    private static int[][] tabellaEquilibrio = new int[N][N];
+    private static int potenzaMassima;
+
+/*     public static void main(String[] args) {
 
         generaEquilibrio();
         mostraEquilibrio();
         System.out.println(potenzaMassima());
+    } */
+
+    public static int[][] getTabellaEquilibrio() {
+        return tabellaEquilibrio;
+    }
+
+    public static int getPotenzaMassima() {
+        return potenzaMassima;
     }
 
     /**
@@ -101,7 +114,7 @@ public class Equilibrio {
     /**
      * Trova il valore di potenza massimo all'interno della tabella dell'equilibrio
      */
-    public static int potenzaMassima() {
+    public static void calcolaPotenzaMassima() {
         int max = 0;
         
         for (int[] riga : tabellaEquilibrio) {
@@ -110,6 +123,7 @@ public class Equilibrio {
             }
         }
         
-        return max;
+        potenzaMassima = max;
     }
+
 }
