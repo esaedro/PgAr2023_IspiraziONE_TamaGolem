@@ -11,17 +11,30 @@ public class InterazioneUtenti {
     /**
      * Chiede al giocarore di selezionare quali pietre elementali vuole inserire nella scorta 
      */
-    public static Pietra selezionaPietra() {
-        String[] listaPietre = new String[Scontro.getScortaDiPietre().size()];
+    public static Pietra selezionaPietra(Giocatore giocatore) {
+        String[] listaPietre = new String[Equilibrio.getN()];
         Pietra pietraSelezionata;
+        int[] contatori = new int[Equilibrio.getN()];
 
-        for (int i = 0; i < Scontro.getScortaDiPietre().size(); i++) {
-            listaPietre[i] = Scontro.getScortaDiPietre().get(i).getElemento().toString();
+        for (int i = 0; i < Equilibrio.getN(); i++) {
+            for (Pietra pietra : Scontro.getScortaDiPietre()) {
+                if (pietra.getElemento() == Elemento.values()[i]) {
+                    contatori[i]++;
+                }
+            }
+            listaPietre[i] = String.format("%-10s %d rimasti", Elemento.values()[i], contatori[i]);
         }
 
-        MyMenu menu = new MyMenu(Frasi.TITOLO_MENU_SELEZIONE_PIETRA, listaPietre);
+        MyMenu menu = new MyMenu(Frasi.TITOLO_MENU_SELEZIONE_PIETRA + " " + giocatore.getNome(), listaPietre);
 
-        pietraSelezionata = Scontro.getScortaDiPietre().get(menu.scegli());
+        int indicePietraSelezionata = 0;
+        int indiceElementoSelezionato = menu.scegli();
+
+        for (int i = 0; i < indiceElementoSelezionato - 1; i++) {
+            indicePietraSelezionata += contatori[i];
+        }
+
+        pietraSelezionata = Scontro.getScortaDiPietre().get(indicePietraSelezionata);
 
         return pietraSelezionata;
     }
