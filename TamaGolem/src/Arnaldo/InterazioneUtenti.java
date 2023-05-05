@@ -25,7 +25,7 @@ public class InterazioneUtenti {
             listaPietre[i] = String.format("%-10s %d rimasti", Elemento.values()[i], contatori[i]);
         }
 
-        MyMenu menu = new MyMenu(Frasi.TITOLO_MENU_SELEZIONE_PIETRA + " " + giocatore.getNome(), listaPietre);
+        MyMenu menu = new MyMenu(giocatore.getNome() + ", " + Frasi.TITOLO_MENU_SELEZIONE_PIETRA, listaPietre);
 
         int indicePietraSelezionata = 0;
         int indiceElementoSelezionato = menu.scegli();
@@ -83,7 +83,7 @@ public class InterazioneUtenti {
     }
 
     public static void sceltaPietre (Giocatore giocatore1, Giocatore giocatore2) {
-        System.out.println("\n" + giocatore1.getNome() + " selezioni " + Pietra.P + " pietre");
+        System.out.println("\n" + giocatore1.getNome() + " selezioni un totale di " + Pietra.P + " pietre");
         giocatore1.prelevaPietre();
         boolean primoCiclo = true;
         do {
@@ -96,11 +96,11 @@ public class InterazioneUtenti {
         } while (giocatore1.getTamaGolemAttuale().getSetdiPietre().equals(giocatore2.getTamaGolemAttuale().getSetdiPietre()));
     }
 
-    public static void stampaCostanti() {
+    /*public static void stampaCostanti() {
         System.out.println("\nN = " + Equilibrio.getN());
         System.out.println("P = " + Pietra.P);
         System.out.println("G = " + Giocatore.G);
         System.out.println("S = " + Scontro.S);
-    }
+    }*/
 
 }

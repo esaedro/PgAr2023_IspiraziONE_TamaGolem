@@ -7,7 +7,7 @@ import it.unibs.fp.mylib.BelleStringhe;
  */
 public class Frasi {
 
-    public static final String TITOLO_MENU_SELEZIONE_PIETRA = "Seleziona una pietra";
+    public static final String TITOLO_MENU_SELEZIONE_PIETRA = "scelga una pietra";
     public static final String DICHIARAZIONE_VINCITORE = " ha vinto!";
     public static final String RIVELAZIONE_EQUILIBRIO   = "Ecco svelato l'Equilibrio del Mondo";
     public static final String INPUT_GIOCATORE = "Inserisci il nome del giocatore ";
