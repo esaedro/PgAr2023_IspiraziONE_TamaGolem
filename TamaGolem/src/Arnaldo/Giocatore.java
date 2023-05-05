@@ -4,7 +4,7 @@ public class Giocatore {
     /**
     *  Numero di golem per ogni giocatore
     */
-    public static final int G = (int)Math.ceil((Equilibrio.getN()-1)*(Equilibrio.getN()-2)/2*Pietra.P);
+    public static final int G = (int)Math.ceil(((Equilibrio.getN()-1)*(Equilibrio.getN()-2))/(2*Pietra.P));
     private TamaGolem tamaGolemAttuale;
     private int tamaGolemEliminati;
     private String nome;

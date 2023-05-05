@@ -11,7 +11,7 @@ public class Scontro {
     /**
      * Quantità di pietre nella scorta comune
      */
-    public static final int S = (int)Math.ceil(2*Giocatore.G*Pietra.P/Equilibrio.getN()) * Equilibrio.getN();
+    public static final int S = (int)(Equilibrio.getN() * Math.ceil((2*Giocatore.G*Pietra.P)/Equilibrio.getN()));
 
     public Scontro(Giocatore giocatore1, Giocatore giocatore2) {
         this.giocatore1 = giocatore1;

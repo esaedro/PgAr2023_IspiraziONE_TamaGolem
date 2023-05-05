@@ -68,4 +68,26 @@ public class InterazioneUtenti {
     public static void mostraDanno(int danno, Giocatore giocatore) {
         System.out.println("Il golem di "+ giocatore.getNome() + " subisce " + danno + " danni");
     }
+
+    public static void sceltaPietre (Giocatore giocatore1, Giocatore giocatore2) {
+        System.out.println("\n" + giocatore1.getNome() + " selezioni " + Pietra.P + " pietre");
+        giocatore1.prelevaPietre();
+        boolean primoCiclo = true;
+        do {
+            if (!primoCiclo && giocatore1.getTamaGolemAttuale().getSetdiPietre().equals(giocatore2.getTamaGolemAttuale().getSetdiPietre())) {
+                System.out.println(Frasi.ERRORE_PIETRE);
+            }
+            System.out.println("\n" + giocatore2.getNome() + " selezioni " + Pietra.P + " pietre");
+            giocatore2.prelevaPietre();
+            primoCiclo = false;
+        } while (giocatore1.getTamaGolemAttuale().getSetdiPietre().equals(giocatore2.getTamaGolemAttuale().getSetdiPietre()));
+    }
+
+    public static void stampaCostanti() {
+        System.out.println("\nN = " + Equilibrio.getN());
+        System.out.println("P = " + Pietra.P);
+        System.out.println("G = " + Giocatore.G);
+        System.out.println("S = " + Scontro.S);
+    }
+
 }

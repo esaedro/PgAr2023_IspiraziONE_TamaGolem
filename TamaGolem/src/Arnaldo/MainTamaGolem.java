@@ -9,8 +9,10 @@ public class MainTamaGolem {
             Equilibrio.generaEquilibrio();
 
             scontro = new Scontro(InterazioneUtenti.inserimentoGiocatore(1), InterazioneUtenti.inserimentoGiocatore(2));
-            scontro.getGiocatore1().prelevaPietre();
-            scontro.getGiocatore2().prelevaPietre();
+            InterazioneUtenti.stampaCostanti();
+            InterazioneUtenti.sceltaPietre(scontro.getGiocatore1(), scontro.getGiocatore2());
+        //  scontro.getGiocatore1().prelevaPietre();
+        //  scontro.getGiocatore2().prelevaPietre();
 
             while (!(scontro.getGiocatore1().getHaPerso() || scontro.getGiocatore2().getHaPerso())){
                 scontro.scontroGolem(scontro.getGiocatore1().getTamaGolemAttuale(), scontro.getGiocatore2().getTamaGolemAttuale());

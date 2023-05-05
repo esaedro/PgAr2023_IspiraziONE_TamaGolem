@@ -6,6 +6,7 @@ import it.unibs.fp.mylib.BelleStringhe;
  * Classe static contenente le costanti stringa necessarie
  */
 public class Frasi {
+
     public static final String TITOLO_MENU_SELEZIONE_PIETRA = "Seleziona una pietra";
     public static final String DICHIARAZIONE_VINCITORE = " ha vinto!";
     public static final String RIVELAZIONE_EQUILIBRIO   = "Ecco svelato l'Equilibrio del Mondo";
@@ -17,4 +18,5 @@ public class Frasi {
     public static final String ERRORE_NUMERO_ELEMENTI = "Numero di elementi non valido";
     public static final String MESSAGGIO_GOLEM_SCONFITTO = "È stato sconfitto il golem di ";
     public static final String GOLEM_RIMASTI = "Golem rimasti ";
+    public static final String ERRORE_PIETRE = "Le pietre selezionate dal secondo giocatore sono uguali a quelle del primo\nSeleziona nuove pietre ";
 }
