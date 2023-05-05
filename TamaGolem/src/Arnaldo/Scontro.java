@@ -11,23 +11,32 @@ public class Scontro {
     /**
      * Quantità di pietre nella scorta comune
      */
-    public static final int S = (int)Math.ceil(2*Giocatore.G*Pietra.P/Equilibrio.N) * Equilibrio.N;
+    public static final int S = (int)Math.ceil(2*Giocatore.G*Pietra.P/Equilibrio.getN()) * Equilibrio.getN();
 
     public Scontro(Giocatore giocatore1, Giocatore giocatore2) {
         this.giocatore1 = giocatore1;
         this.giocatore2 = giocatore2;
+        riempiScortaDiPietre();
     }
 
     public static ArrayList<Pietra> getScortaDiPietre() {
         return scortaDiPietre;
     }
-    
+
+    public Giocatore getGiocatore1() {
+        return giocatore1;
+    }
+
+    public Giocatore getGiocatore2() {
+        return giocatore2;
+    }
+
     /**
      * Riempie la scorta di pietre con S/N pietre di ciascun elemento
      */
     public void riempiScortaDiPietre() {
-        for (int i = 0; i < S; i++) {
-            for (int j = 0; j < S/Equilibrio.N; j++) { 
+        for (int i = 0; i < Equilibrio.getN(); i++) {
+            for (int j = 0; j < S/Equilibrio.getN(); j++) { 
                 scortaDiPietre.add(new Pietra(Elemento.values()[i]));    //Pietra che ha come elemento quello di posizione j
             }
         }
@@ -42,25 +51,30 @@ public class Scontro {
         int i = golem1.getSetdiPietre().element().getElemento().ordinal();
         int j = golem2.getSetdiPietre().element().getElemento().ordinal();
 
-        if (confrontoPietre(golem1.getSetdiPietre().element(), golem2.getSetdiPietre().element())) {
-            int danno = Equilibrio.getTabellaEquilibrio()[i][j];
-            golem2.subisciDanno(danno);
-            InterazioneUtenti.mostraDanno(danno);
-
-            if (!golem2.inVita()) {
-                morteTamagolem(giocatore2);
+        while (golem1.inVita() && golem2.inVita()) {
+            if (confrontoPietre(golem1.getSetdiPietre().element(), golem2.getSetdiPietre().element())) {
+                int danno = Equilibrio.getTabellaEquilibrio()[i][j];
+                golem2.subisciDanno(danno);
+                InterazioneUtenti.mostraDanno(danno, giocatore2);
             }
+
+            else {
+                int danno = Equilibrio.getTabellaEquilibrio()[j][i];
+                golem1.subisciDanno(danno);
+                InterazioneUtenti.mostraDanno(danno, giocatore1);
+            }
+
+            golem1.getSetdiPietre().add(golem1.getSetdiPietre().poll());
+            golem2.getSetdiPietre().add(golem2.getSetdiPietre().poll());
         }
 
+        if (!golem1.inVita()) {
+            morteTamagolem(giocatore1);
+        }
         else {
-            int danno = Equilibrio.getTabellaEquilibrio()[j][i];
-            golem1.subisciDanno(danno);
-            InterazioneUtenti.mostraDanno(danno);
-
-            if (!golem1.inVita()) {
-                morteTamagolem(giocatore1);
-            }
+            morteTamagolem(giocatore2);
         }
+
     }
    
     /**
@@ -82,10 +96,13 @@ public class Scontro {
      */
     public void morteTamagolem(Giocatore possessoreDelTamagolem) {
         possessoreDelTamagolem.aumentaTamagolemEliminati();
+        InterazioneUtenti.morteTamagolem(possessoreDelTamagolem);
+
         if (possessoreDelTamagolem.getTamaGolemEliminati() == Giocatore.G) {
-            terminaScontro(possessoreDelTamagolem);
+            determinaVincitore(possessoreDelTamagolem);
         } else {
             possessoreDelTamagolem.generaTamaGolem();
+            possessoreDelTamagolem.prelevaPietre();
         }
     }
 
@@ -93,12 +110,15 @@ public class Scontro {
      * Termina lo scontro dichiarando il vincitore 
      * @param perdente
      */
-    public void terminaScontro(Giocatore perdente){
+    public void determinaVincitore(Giocatore perdente){
         if (perdente.equals(giocatore1)){
-            System.out.println(giocatore2.getNome() + Frasi.DICHIARAZIONE_VINCITORE);
+            giocatore1.sconfitta();
         }
         else {
-            System.out.println(giocatore1.getNome() + Frasi.DICHIARAZIONE_VINCITORE);
-        }    
+            giocatore2.sconfitta();
+        }
     }
+
+
+
 }

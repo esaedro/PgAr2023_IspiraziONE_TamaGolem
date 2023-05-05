@@ -3,6 +3,9 @@ package Arnaldo;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
+/**
+ * Classe istanziabile che rappresenta i TamaGolem
+ */
 public class TamaGolem {
 
     private int vita;
@@ -23,10 +26,6 @@ public class TamaGolem {
     public Deque<Pietra> getSetdiPietre() {
         return setdiPietre;
     }
-
-    public void setSetdiPietre(Deque<Pietra> setdiPietre) {
-        this.setdiPietre = setdiPietre;
-    }
  
     public void subisciDanno(int danno) {
         vita -= danno;
@@ -34,5 +33,12 @@ public class TamaGolem {
 
     public boolean inVita() {
         return vita > 0;
+    }
+
+    public String toString () {
+        StringBuffer descrizione = new StringBuffer();
+        descrizione.append(String.format("Vita: %d", vita));
+        descrizione.append("\nPietra corrente di tipo: " + setdiPietre.element().toString());
+        return descrizione.toString(); 
     }
 }

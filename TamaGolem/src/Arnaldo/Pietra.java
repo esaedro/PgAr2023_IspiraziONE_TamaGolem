@@ -5,7 +5,7 @@ public class Pietra {
     /**
      * Numero di pietre per ogni tamagolem
      */
-    public static final int P = (int)Math.ceil((double)(Equilibrio.N + 1) / 3.0) + 1;
+    public static final int P = (int)Math.ceil((double)(Equilibrio.getN() + 1) / 3.0) + 1;
 
     private Elemento elemento;
 

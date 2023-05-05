@@ -2,22 +2,29 @@ package Arnaldo;
 
 import it.unibs.fp.mylib.EstrazioneCasuale;
 
+/**
+ * 
+ */
 public class Equilibrio {
 
     /**
      * Numero di elementi
      */
-    public static final int N = 5;
-    private static final int[] valori = { -1, -1, -1, -1, -1, -1, -1, -1, 1, 2, 3, 4, 5, 6, 7, 8};
+    private static int N = 5;
+    private static final int[] valori = {-1, -1, -1, -1, -1, -1, -1, -1, 1, 2, 3, 4, 5, 6, 7, 8};
     private static int[][] tabellaEquilibrio = new int[N][N];
     private static int potenzaMassima;
 
 /*     public static void main(String[] args) {
 
-        generaEquilibrio();
-        mostraEquilibrio();
-        System.out.println(potenzaMassima());
-    } */
+    generaEquilibrio();
+    mostraEquilibrio();
+    System.out.println(potenzaMassima());
+} */
+
+    public static int getN() {
+        return N;
+    }
 
     public static int[][] getTabellaEquilibrio() {
         return tabellaEquilibrio;
@@ -25,6 +32,10 @@ public class Equilibrio {
 
     public static int getPotenzaMassima() {
         return potenzaMassima;
+    }
+
+    public static void setN(int n) {
+        N = n;
     }
 
     /**
@@ -88,6 +99,8 @@ public class Equilibrio {
                 tabellaEquilibrio[j][i] = valori[0];
             }
         }
+
+        calcolaPotenzaMassima();
     }
 
     /**
