@@ -52,7 +52,7 @@ public class Giocatore {
     public void prelevaPietre(){
         Pietra pietraSelezionata;
         for(int i = 0; i < Pietra.P; i++){
-            pietraSelezionata = InterazioneUtenti.selezionaPietra();
+            pietraSelezionata = InterazioneUtenti.selezionaPietra(this);
             Scontro.getScortaDiPietre().remove(pietraSelezionata);
             tamaGolemAttuale.aggiungiPietra(pietraSelezionata);
         }

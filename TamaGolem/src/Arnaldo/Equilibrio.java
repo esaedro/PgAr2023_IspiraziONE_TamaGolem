@@ -10,9 +10,9 @@ public class Equilibrio {
     /**
      * Numero di elementi
      */
-    private static int N = 5;
+    private static int N;
     private static final int[] valori = {-1, -1, -1, -1, -1, -1, -1, -1, 1, 2, 3, 4, 5, 6, 7, 8};
-    private static int[][] tabellaEquilibrio = new int[N][N];
+    private static int[][] tabellaEquilibrio;
     private static int potenzaMassima;
 
 /*     public static void main(String[] args) {
@@ -43,6 +43,7 @@ public class Equilibrio {
      */
     public static void generaEquilibrio() {
         int sommaRiga, sommaColonna, valoreEstratto, i, j;
+        tabellaEquilibrio = new int[N][N];
 
         cicloDellaRiga: for (i = 0; i < N - 1; i++) {
             sommaRiga = sommaColonna = 0;
