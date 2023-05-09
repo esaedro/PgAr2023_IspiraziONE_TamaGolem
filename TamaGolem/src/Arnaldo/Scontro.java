@@ -7,6 +7,7 @@ public class Scontro {
     private Giocatore giocatore1;
     private Giocatore giocatore2;
     private static ArrayList<Pietra> scortaDiPietre = new ArrayList<>();
+    private static int turno;
 
     /**
      * Quantità di pietre nella scorta comune
@@ -17,10 +18,15 @@ public class Scontro {
         this.giocatore1 = giocatore1;
         this.giocatore2 = giocatore2;
         riempiScortaDiPietre();
+        resetTurno();
     }
 
     public static int getS() {
         return S;
+    }
+
+    public static int getTurno() {
+        return turno;
     }
 
     public static ArrayList<Pietra> getScortaDiPietre() {
@@ -37,6 +43,14 @@ public class Scontro {
 
     public static void setS(int s) {
         S = s;
+    }
+
+    public static void incrementaTurno() {
+        turno++;
+    }
+    
+    public static void resetTurno() {
+        turno = 1;
     }
 
     /**
@@ -56,30 +70,37 @@ public class Scontro {
      * @param golem1
      * @param golem2
      */ 
-    public void scontroGolem(TamaGolem golem1, TamaGolem golem2) {
-        int i = golem1.getSetDiPietre().element().getElemento().ordinal();
-        int j = golem2.getSetDiPietre().element().getElemento().ordinal();
+    public void scontroGolem(Giocatore giocatore1, Giocatore giocatore2) {
+        int i, j;
+        TamaGolem golem1 = giocatore1.getTamaGolemAttuale();
+        TamaGolem golem2 = giocatore2.getTamaGolemAttuale();
 
         while (golem1.inVita() && golem2.inVita()) {
+            i = golem1.getSetDiPietre().element().getElemento().ordinal();
+            j = golem2.getSetDiPietre().element().getElemento().ordinal();
+
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();;
+                Thread.currentThread().interrupt();
             }
+
             if (confrontoPietre(golem1.getSetDiPietre().element(), golem2.getSetDiPietre().element())) {
                 int danno = Equilibrio.getTabellaEquilibrio()[i][j];
                 golem2.subisciDanno(danno);
-                InterazioneUtenti.mostraDanno(danno, giocatore2);
+                InterazioneUtenti.mostraAzione(danno, giocatore2, giocatore1);
             }
 
             else {
                 int danno = Equilibrio.getTabellaEquilibrio()[j][i];
                 golem1.subisciDanno(danno);
-                InterazioneUtenti.mostraDanno(danno, giocatore1);
+                InterazioneUtenti.mostraAzione(danno, giocatore1, giocatore2);
             }
 
-            golem1.getSetDiPietre().add(golem1.getSetDiPietre().poll());
-            golem2.getSetDiPietre().add(golem2.getSetDiPietre().poll());
+            golem1.giraSet();
+            golem2.giraSet();
+
+            incrementaTurno();
         }
 
         if (!golem1.inVita()) {
@@ -131,7 +152,5 @@ public class Scontro {
             giocatore2.sconfitta();
         }
     }
-
-
 
 }

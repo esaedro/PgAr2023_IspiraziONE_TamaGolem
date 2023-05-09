@@ -39,6 +39,10 @@ public class TamaGolem {
         return vita > 0;
     }
 
+    public void giraSet() {
+        setDiPietre.add(setDiPietre.poll());
+    }
+
     public String toString () {
         StringBuffer descrizione = new StringBuffer();
         descrizione.append(String.format("Vita: %d", vita));

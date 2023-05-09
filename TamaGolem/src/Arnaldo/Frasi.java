@@ -9,7 +9,7 @@ public class Frasi {
 
     public static final String TITOLO_MENU_SELEZIONE_PIETRA = "scegli una pietra";
     public static final String DICHIARAZIONE_VINCITORE = " ha vinto!";
-    public static final String RIVELAZIONE_EQUILIBRIO   = "\nEcco svelato l'Equilibrio del Mondo";
+    public static final String RIVELAZIONE_EQUILIBRIO   = "\nEcco svelato l'Equilibrio del Mondo:";
     public static final String INPUT_GIOCATORE = "Inserisci il nome del giocatore ";
     public static final String ERRORE_INPUT_GIOCATORE = "Il giocatore deve avere un nome";
     public static final String CONFERMA_NUOVO_SCONTRO = "Vuoi iniziare un nuovo scontro?";
@@ -21,4 +21,5 @@ public class Frasi {
     public static final String ERRORE_PIETRE = "Le pietre selezionate dal secondo giocatore sono uguali a quelle del primo\nSeleziona nuove pietre ";
     public static final String MESSAGGIO_TENTATA_USCITA = "\nNon è possibile uscire in questo punto del programma";
     public static final String MESSAGGIO_PIETRE_FINITE = "Non ci sono piu' pietre di questo elemento";
+    public static final String MESSAGGIO_DANNO_NULLO = "Le pietre dei due golem sono dello stesso elemento, nessuno subisce danno";
 }

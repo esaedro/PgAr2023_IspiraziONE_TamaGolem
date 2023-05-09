@@ -1,7 +1,9 @@
 package Arnaldo;
 
 import java.util.ArrayList;
+import java.util.Deque;
 
+import it.unibs.fp.mylib.BelleStringhe;
 import it.unibs.fp.mylib.InputDati;
 import it.unibs.fp.mylib.MyMenu;
 
@@ -80,6 +82,9 @@ public class InterazioneUtenti {
         Equilibrio.mostraEquilibrio();
     }
     
+    /**
+     * Stampa quando un golem muore e il numero di golem rimasti la giocatore
+     */
     public static void morteTamagolem(Giocatore giocatore) {
         System.out.println(Frasi.MESSAGGIO_GOLEM_SCONFITTO + giocatore.getNome());
         System.out.println(Frasi.GOLEM_RIMASTI + (Giocatore.getG() - giocatore.getTamaGolemEliminati()));
@@ -88,31 +93,48 @@ public class InterazioneUtenti {
     /**
      * Stampa a video il danno subito dal golem perdente
      */
-    public static void mostraDanno(int danno, Giocatore giocatore) {
-        System.out.println("Il golem di "+ giocatore.getNome() + " subisce " + danno + " danni");
+    public static void mostraAzione(int danno, Giocatore offeso, Giocatore attaccante) {
+
+        System.out.println("\n" + BelleStringhe.incornicia("Turno: " + String.valueOf(Scontro.getTurno())));
+
+        System.out.println("Golem di " + attaccante.getNome() + ":");
+        System.out.print("\tSet di pietre attuale: ");
+        mostraSetDiPietre(attaccante.getTamaGolemAttuale().getSetDiPietre());
+        System.out.println("\n\tVita: " + attaccante.getTamaGolemAttuale().getVita() + "\n");
+
+        System.out.println("Golem di " + offeso.getNome() + ":");
+        System.out.print("\tSet di pietre attuale: ");
+        mostraSetDiPietre(offeso.getTamaGolemAttuale().getSetDiPietre());
+
+        if (danno != 0) {
+            System.out.println("\n\tDanno subito: " + danno);
+
+            if (offeso.getTamaGolemAttuale().inVita()) {
+                System.out.println("\tVita: " + offeso.getTamaGolemAttuale().getVita() + "\n");
+            } else {
+                System.out.println("\tVita: 0");
+            }
+        } else {
+            System.out.println("\n\tVita: " + offeso.getTamaGolemAttuale().getVita() + "\n");
+            System.out.println(Frasi.MESSAGGIO_DANNO_NULLO);
+        }
+
     }
 
-/*     public static void sceltaPietre(Giocatore giocatore1, Giocatore giocatore2) {
-        int pietrePerGolem = Pietra.getP(), contatore = 0;
-        Pietra[] pietre1, pietre2;
-        System.out.println("\n" + giocatore1.getNome() + ", seleziona un totale di " + pietrePerGolem + " pietre");
-        giocatore1.prelevaPietre();
-        System.out.println("\n" + giocatore2.getNome() + ", seleziona un totale di " + pietrePerGolem + " pietre");
-        giocatore2.prelevaPietre();
+    public static void mostraSetDiPietre(Deque<Pietra> coda){
+        Pietra[] set = coda.toArray(new Pietra[Pietra.getP()]);
 
-        for (int i = 0; i < pietrePerGolem; i++) {
-            pietre1 = giocatore1.getTamaGolemAttuale().getSetDiPietre().toArray(new Pietra[pietrePerGolem]);
-            pietre2 = giocatore2.getTamaGolemAttuale().getSetDiPietre().toArray(new Pietra[pietrePerGolem]);
-
-            contatore += (pietre1[i].getElemento().equals(pietre2[i].getElemento())) ? 1 : 0;
+        for (int i = 0; i < Pietra.getP(); i++) {
+            System.out.print(set[i].getElemento().toString());
+            if (i != Pietra.getP() - 1) {
+                System.out.print(", ");
+            }
         }
-
-        while (contatore == pietrePerGolem) {
-            System.out.println("\nI set di pietre selezionati dai due giocatori sono uguali, si creerebbe un loop infinito.\nÈ necessario riselezionare i set per continuare");
-            sceltaPietre(giocatore1, giocatore2);
-        }
-    } */
-
+    }
+    
+    /**
+     * Dato il numero di elementi, calcola e inizializza le variabili che ne derivano
+     */
     public static void inizializzaVariabiliPartita(int n) {
         Equilibrio.setN(n);
         Pietra.setP(1 + (int)Math.ceil((n + 1) / 3.0));
@@ -120,11 +142,11 @@ public class InterazioneUtenti {
         Scontro.setS((int)(n * Math.ceil((2.0*Giocatore.getG()*Pietra.getP())/ n)));
     }
 
-    public static void stampaCostanti() {
+  /*  public static void stampaCostanti() {
         System.out.println("\nN = " + Equilibrio.getN());
         System.out.println("P = " + Pietra.getP());
         System.out.println("G = " + Giocatore.getG());
         System.out.println("S = " + Scontro.getS());
-    }
+    }*/
 
 }
