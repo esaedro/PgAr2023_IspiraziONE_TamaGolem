@@ -5,12 +5,16 @@ public class MainTamaGolem {
         System.out.println(Frasi.BENVENUTO);
         Scontro scontro;
         do{
-            Equilibrio.setN(InterazioneUtenti.selezionaNumeroDiElementi());
+            InterazioneUtenti.inizializzaVariabiliPartita(InterazioneUtenti.selezionaNumeroDiElementi());
             Equilibrio.generaEquilibrio();
 
             scontro = new Scontro(InterazioneUtenti.inserimentoGiocatore(1), InterazioneUtenti.inserimentoGiocatore(2));
-            //InterazioneUtenti.stampaCostanti();
-            InterazioneUtenti.sceltaPietre(scontro.getGiocatore1(), scontro.getGiocatore2());
+            InterazioneUtenti.stampaCostanti();
+            scontro.getGiocatore1().prelevaPietre(scontro);
+            scontro.getGiocatore2().prelevaPietre(scontro);
+            System.out.println(scontro.getGiocatore1().getTamaGolemAttuale().getSetDiPietre());
+            System.out.println(scontro.getGiocatore2().getTamaGolemAttuale().getSetDiPietre());
+            // InterazioneUtenti.sceltaPietre(scontro.getGiocatore1(), scontro.getGiocatore2());
         
             while (!(scontro.getGiocatore1().getHaPerso() || scontro.getGiocatore2().getHaPerso())){
                 scontro.scontroGolem(scontro.getGiocatore1().getTamaGolemAttuale(), scontro.getGiocatore2().getTamaGolemAttuale());

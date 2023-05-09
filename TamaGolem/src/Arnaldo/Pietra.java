@@ -5,15 +5,23 @@ public class Pietra {
     /**
      * Numero di pietre per ogni tamagolem
      */
-    public static final int P = 1 + (int)Math.ceil((Equilibrio.getN() + 1) / 3.0);
+    private static int P;
 
     private Elemento elemento;
 
-    public Pietra (Elemento elemento) {
+    public Pietra(Elemento elemento) {
         this.elemento = elemento;
+    }
+
+    public static int getP() {
+        return P;
     }
 
     public Elemento getElemento() {
         return elemento;
+    }
+
+    public static void setP(int p) {
+        P = p;
     }
 }

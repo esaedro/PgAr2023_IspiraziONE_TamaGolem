@@ -112,7 +112,7 @@ public class Equilibrio {
         for (int[] riga : tabellaEquilibrio) {
             System.out.println();
             for (int elemento : riga) {
-                if (elemento == -1) {
+                if (elemento < 0) {
                     System.out.print("  X");
                 }
                 else {

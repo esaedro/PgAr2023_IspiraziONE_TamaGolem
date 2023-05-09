@@ -9,24 +9,28 @@ import java.util.Deque;
 public class TamaGolem {
 
     private int vita;
-    private Deque<Pietra> setdiPietre = new ArrayDeque<>(Pietra.P);
+    private Deque<Pietra> setDiPietre = new ArrayDeque<>(Pietra.getP());
     
     public TamaGolem() {
         this.vita = Equilibrio.getPotenzaMassima();
-    }
-
-    public void aggiungiPietra(Pietra p){
-        setdiPietre.add(p); 
     }
 
     public int getVita() {
         return vita;
     }
 
-    public Deque<Pietra> getSetdiPietre() {
-        return setdiPietre;
+    public Deque<Pietra> getSetDiPietre() {
+        return setDiPietre;
+    }
+
+    public void svuotaSetDiPietre() {
+        setDiPietre.clear();
     }
  
+    public void aggiungiPietra(Pietra p){
+        setDiPietre.add(p); 
+    }
+
     public void subisciDanno(int danno) {
         vita -= danno;
     }
@@ -38,7 +42,7 @@ public class TamaGolem {
     public String toString () {
         StringBuffer descrizione = new StringBuffer();
         descrizione.append(String.format("Vita: %d", vita));
-        descrizione.append("\nPietra corrente di tipo: " + setdiPietre.element().toString());
+        descrizione.append("\nPietra corrente di tipo: " + setDiPietre.element().toString());
         return descrizione.toString(); 
     }
 }
