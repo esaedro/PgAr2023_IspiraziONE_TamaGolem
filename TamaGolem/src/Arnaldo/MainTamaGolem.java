@@ -9,7 +9,6 @@ public class MainTamaGolem {
             Equilibrio.generaEquilibrio();
 
             scontro = new Scontro(InterazioneUtenti.inserimentoGiocatore(1), InterazioneUtenti.inserimentoGiocatore(2));
-            //InterazioneUtenti.stampaCostanti();
             scontro.getGiocatore1().prelevaPietre(scontro);
             scontro.getGiocatore2().prelevaPietre(scontro);
         

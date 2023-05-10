@@ -2,12 +2,15 @@ package Arnaldo;
 
 import java.util.ArrayList;
 
+/**
+ * Classe istanziabile per rappresentare i giocatori della partita
+ */
 public class Giocatore {
 
     /**
     *  Numero di golem per ogni giocatore
     */
-    private static int G = (int)Math.ceil(((Equilibrio.getN()-1.0)*(Equilibrio.getN()-2.0))/(2.0*Pietra.getP()));
+    private static int G;
     private TamaGolem tamaGolemAttuale;
     private int tamaGolemEliminati;
     private String nome;
@@ -37,10 +40,6 @@ public class Giocatore {
         return tamaGolemAttuale;
     }
 
-    public void generaTamaGolem() {
-        tamaGolemAttuale = new TamaGolem();
-    }
-
     public int getTamaGolemEliminati() {
         return tamaGolemEliminati;
     }
@@ -49,10 +48,23 @@ public class Giocatore {
         return haPerso;
     }
 
+    /**
+     * Genera un nuovo tamagolem, chiamata quando muore il golem precedente
+     */
+    public void generaTamaGolem() {
+        tamaGolemAttuale = new TamaGolem();
+    }
+
+    /**
+     * Incrementa il numero di golem eliminati quando un golem del giocatore muore
+     */
     public void aumentaTamagolemEliminati() {
         this.tamaGolemEliminati += 1;
     }
 
+    /**
+     * Stabilisce se un giocatore ha perso, quando non ha golem rimasti
+     */
     public void sconfitta() {
         haPerso = true;
     }
@@ -65,6 +77,8 @@ public class Giocatore {
         ArrayList<Pietra> scortaModificata = new ArrayList<>(Scontro.getScortaDiPietre());
         int pietrePerTamagolem = Pietra.getP(), pietreUguali = 0;
         tamaGolemAttuale.svuotaSetDiPietre();
+
+        System.out.println("\n" + this.nome + ", scegli un totale di " + pietrePerTamagolem + " pietre");
 
         for(int i = 0; i < pietrePerTamagolem; i++){
             pietraSelezionata = InterazioneUtenti.selezionaPietra(this, scortaModificata);
@@ -79,7 +93,7 @@ public class Giocatore {
             for (pietreUguali = 0; pietreUguali < pietrePerTamagolem && pietre1[pietreUguali].getElemento().equals(pietre2[pietreUguali].getElemento()); pietreUguali++);
 
             if (pietreUguali == pietrePerTamagolem) {
-                System.out.println("I set di pietre dei due tamagolem sono uguali, ciò comporterebbe uno scontro infinito\nÈ necessario riselezionare i set");
+                System.out.println(Frasi.MESSAGGIO_SET_UGUALI);
                 this.tamaGolemAttuale.svuotaSetDiPietre();
                 prelevaPietre(scontro);
             } else {

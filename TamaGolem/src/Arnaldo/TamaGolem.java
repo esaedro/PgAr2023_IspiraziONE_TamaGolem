@@ -35,18 +35,18 @@ public class TamaGolem {
         vita -= danno;
     }
 
+    /**
+     * Controlla se il golem è ancora vivo
+     * @return true se la vita è ancora positiva
+     */
     public boolean inVita() {
         return vita > 0;
     }
 
+    /**
+     * Fa girare il set di pietre spostando l'utlima pietra all'inizio della coda
+     */
     public void giraSet() {
         setDiPietre.add(setDiPietre.poll());
-    }
-
-    public String toString () {
-        StringBuffer descrizione = new StringBuffer();
-        descrizione.append(String.format("Vita: %d", vita));
-        descrizione.append("\nPietra corrente di tipo: " + setDiPietre.element().toString());
-        return descrizione.toString(); 
     }
 }

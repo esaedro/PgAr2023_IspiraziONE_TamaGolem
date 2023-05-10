@@ -2,7 +2,6 @@ package Arnaldo;
 
 import java.util.ArrayList;
 import java.util.Deque;
-
 import it.unibs.fp.mylib.BelleStringhe;
 import it.unibs.fp.mylib.InputDati;
 import it.unibs.fp.mylib.MyMenu;
@@ -118,9 +117,12 @@ public class InterazioneUtenti {
             System.out.println("\n\tVita: " + offeso.getTamaGolemAttuale().getVita() + "\n");
             System.out.println(Frasi.MESSAGGIO_DANNO_NULLO);
         }
-
     }
 
+    /**
+     * Stampa le pietre del golem in ordine
+     * @param coda Elenco di pietre appartenenti ad un golem
+     */
     public static void mostraSetDiPietre(Deque<Pietra> coda){
         Pietra[] set = coda.toArray(new Pietra[Pietra.getP()]);
 
@@ -141,12 +143,4 @@ public class InterazioneUtenti {
         Giocatore.setG((int)Math.ceil((n - 1) * (n - 2) / (2.0*Pietra.getP())));
         Scontro.setS((int)(n * Math.ceil((2.0*Giocatore.getG()*Pietra.getP())/ n)));
     }
-
-  /*  public static void stampaCostanti() {
-        System.out.println("\nN = " + Equilibrio.getN());
-        System.out.println("P = " + Pietra.getP());
-        System.out.println("G = " + Giocatore.getG());
-        System.out.println("S = " + Scontro.getS());
-    }*/
-
 }

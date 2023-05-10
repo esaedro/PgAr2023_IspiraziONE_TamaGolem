@@ -1,5 +1,8 @@
 package Arnaldo;
 
+/**
+ * Classe istanziabile per rappresentare le pietre
+ */
 public class Pietra {
 
     /**

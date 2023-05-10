@@ -3,7 +3,7 @@ package Arnaldo;
 import it.unibs.fp.mylib.EstrazioneCasuale;
 
 /**
- * 
+ * Classe static per gestire l'equilibrio decgli elementi
  */
 public class Equilibrio {
 
@@ -14,13 +14,6 @@ public class Equilibrio {
     private static final int[] valori = {-1, -1, -1, -1, -1, -1, -1, -1, 1, 2, 3, 4, 5, 6, 7, 8};
     private static int[][] tabellaEquilibrio;
     private static int potenzaMassima;
-
-/*     public static void main(String[] args) {
-
-    generaEquilibrio();
-    mostraEquilibrio();
-    System.out.println(potenzaMassima());
-} */
 
     public static int getN() {
         return N;
@@ -77,7 +70,7 @@ public class Equilibrio {
                     continue cicloDellaRiga;
                 }
 
-                // Controlla dove è l'utlimo numero inserito e lo rigenera
+                // Controlla dove è l'ultimo numero inserito e lo rigenera
                 if (tabellaEquilibrio[i][j - 1] > 0) {
                     sommaRiga -= tabellaEquilibrio[i][j - 1];
                     tabellaEquilibrio[i][j - 1] = valori[EstrazioneCasuale.estraiIntero(valori.length / 2,
@@ -100,7 +93,6 @@ public class Equilibrio {
                 tabellaEquilibrio[j][i] = valori[0];
             }
         }
-
         calcolaPotenzaMassima();
     }
 
@@ -109,9 +101,11 @@ public class Equilibrio {
      */
     public static void mostraEquilibrio() {
 
-        for (int[] riga : tabellaEquilibrio) {
-            System.out.println();
-            for (int elemento : riga) {
+        //int banana = Integer.valueOf(Elemento.AGOSTO.toString());
+
+        for (int i = 0; i < N ;i ++) {
+            System.out.print("\n" + String.format("%-10s", Elemento.values()[i].toString()));
+            for (int elemento : tabellaEquilibrio[i]) {
                 if (elemento < 0) {
                     System.out.print("  X");
                 }
@@ -120,9 +114,7 @@ public class Equilibrio {
                 }
             }
         }
-
         System.out.println();
-
     }
 
     /**
@@ -136,8 +128,6 @@ public class Equilibrio {
                 max = potenza > max ? potenza : max;
             }
         }
-        
         potenzaMassima = max;
     }
-
 }

@@ -2,6 +2,9 @@ package Arnaldo;
 
 import java.util.ArrayList;
 
+/**
+ * Classe per creare e gestire uno scontro
+ */
 public class Scontro {
     
     private Giocatore giocatore1;
@@ -49,6 +52,9 @@ public class Scontro {
         turno++;
     }
     
+    /**
+     * Riporta al primo turno quando si genera un nuovo scontro
+     */
     public static void resetTurno() {
         turno = 1;
     }
@@ -80,7 +86,7 @@ public class Scontro {
             j = golem2.getSetDiPietre().element().getElemento().ordinal();
 
             try {
-                Thread.sleep(2000);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
@@ -152,5 +158,4 @@ public class Scontro {
             giocatore2.sconfitta();
         }
     }
-
 }
