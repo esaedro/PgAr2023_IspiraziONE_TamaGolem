@@ -22,5 +22,5 @@ public class Frasi {
     public static final String MESSAGGIO_TENTATA_USCITA = "\nNon è possibile uscire in questo punto del programma";
     public static final String MESSAGGIO_PIETRE_FINITE = "Non ci sono piu' pietre di questo elemento";
     public static final String MESSAGGIO_DANNO_NULLO = "Le pietre dei due golem sono dello stesso elemento, nessuno subisce danno";
-    public static final String MESSAGGIO_SET_UGUALI = "\n" + BelleStringhe.incornicia("I set di pietre dei due tamagolem sono uguali, ciò comporterebbe uno scontro infinito\nÈ necessario riselezionare i set");
+    public static final String MESSAGGIO_SET_UGUALI = "\n" + BelleStringhe.incornicia("I set di pietre dei due tamagolem sono uguali, ciò comporterebbe uno scontro infinito\nÈ necessario riselezionare l'ultimo set");
 }
