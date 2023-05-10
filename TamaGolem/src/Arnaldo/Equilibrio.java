@@ -101,8 +101,6 @@ public class Equilibrio {
      */
     public static void mostraEquilibrio() {
 
-        //int banana = Integer.valueOf(Elemento.AGOSTO.toString());
-
         for (int i = 0; i < N ;i ++) {
             System.out.print("\n" + String.format("%-10s", Elemento.values()[i].toString()));
             for (int elemento : tabellaEquilibrio[i]) {

@@ -6,13 +6,17 @@ import it.unibs.fp.mylib.BelleStringhe;
 import it.unibs.fp.mylib.InputDati;
 import it.unibs.fp.mylib.MyMenu;
 
+/**
+ * Classe static contenente i metodi di interazione con gli utenti che giocano
+ */
 public class InterazioneUtenti {
 
     private static final int MIN_ELEMENTI = 3;
     private static final int MAX_ELEMENTI = 10;
 
     /**
-     * Chiede al giocatore di selezionare quali pietre elementali vuole inserire nella scorta 
+     * Chiede al giocatore di selezionare quali pietre elementali vuole inserire nella scorta
+     * @return Pietra selezionata
      */
     public static Pietra selezionaPietra(Giocatore giocatore, ArrayList<Pietra> scorta) {
         String[] listaPietre = new String[Equilibrio.getN()];
@@ -52,6 +56,7 @@ public class InterazioneUtenti {
 
     /**
      * Chiede ai giocatori di inserire il loro nome
+     * @return nuovo oggetto giocatore
      */
     public static Giocatore inserimentoGiocatore(int numeroGiocatore) {
         String nome = InputDati.leggiStringaNonVuota(Frasi.INPUT_GIOCATORE + numeroGiocatore + ": ", Frasi.ERRORE_INPUT_GIOCATORE);
@@ -60,6 +65,7 @@ public class InterazioneUtenti {
 
     /**
      * Chiede al giocatore di selezionare il numero di elementi da generare per l'Equilibrio
+     * @return numero di elementi scelto da tastiera
      */
     public static int selezionaNumeroDiElementi() {
         return InputDati.leggiInteroMinMax(Frasi.RICHIESTA_NUMERO_ELEMENTI, MIN_ELEMENTI, MAX_ELEMENTI, Frasi.ERRORE_NUMERO_ELEMENTI);
@@ -67,6 +73,7 @@ public class InterazioneUtenti {
 
     /**
      * Chiede all'utente e restituisce true se si vuole giocare una nuova partita
+     * @return conferma (true/false)
      */
     public static boolean continuaPartita() {
         return InputDati.conferma(Frasi.CONFERMA_NUOVO_SCONTRO);
