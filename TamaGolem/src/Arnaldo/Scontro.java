@@ -86,7 +86,7 @@ public class Scontro {
             j = golem2.getSetDiPietre().element().getElemento().ordinal();
 
             try {
-                Thread.sleep(100);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
