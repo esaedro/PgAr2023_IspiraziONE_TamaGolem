@@ -73,8 +73,8 @@ public class Scontro {
 
     /**
      * Gestisce lo scontro tra golem, infliggendo danno a chi perde il confronto delle pietre
-     * @param golem1
-     * @param golem2
+     * @param giocatore1
+     * @param giocatore2
      */ 
     public void scontroGolem(Giocatore giocatore1, Giocatore giocatore2) {
         int i, j;
